@@ -30,20 +30,10 @@ export default {
   },
   methods: {
     efetuarLogin() {
-      this.$http
-        .post("auth/login", this.usuario)
-        .then((resp) => {
-          console.log(resp);
-          //localStorage.setItem("token", resp.data.access_token);
-
-          this.$store.commit("DEFINIR_USUARIO_LOGADO", {
-            token: resp.data.access_token,
-            usuario: resp.data.user,
-          });
-
-          this.$router.push({ name: "gerentes" });
-        })
-        .catch((erro) => console.log(erro));
+      //dispatch chama uma action
+      this.$store.dispatch("efetuarLogin", this.usuario).then(() => {
+        this.$router.push({ name: "gerentes" });
+      });
     },
   },
 };
