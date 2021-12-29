@@ -19,12 +19,9 @@
 </template>
 
 <script>
+import { logoutMixin } from "@/mixins";
+
 export default {
-  methods: {
-    efetuarLogout() {
-      this.$store.commit("DESLOGAR_USUARIO");
-      this.$router.push({ name: "login" });
-    },
-  },
+  mixins: [logoutMixin],
 };
 </script>
